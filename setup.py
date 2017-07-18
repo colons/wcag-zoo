@@ -42,6 +42,7 @@ setup(
         "webcolors",
         "click",
         "xtermcolor",
+        "six",
     ],
 
 )

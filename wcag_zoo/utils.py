@@ -10,6 +10,8 @@ from premailer import Premailer
 # From Premailer
 import cssutils
 import re
+from six import u
+
 cssutils.log.setLevel(logging.CRITICAL)
 _element_selector_regex = re.compile(r'(^|\s)\w')
 FILTER_PSEUDOSELECTORS = [':last-child', ':first-child', 'nth-child']
@@ -66,9 +68,9 @@ class Premoler(Premailer):
 
         def format_css_property(prop):
             if self.strip_important or prop.priority != 'important':
-                return '{0}:{1}'.format(prop.name, prop.value)
+                return u('{0}:{1}').format(prop.name, prop.value)
             else:
-                return '{0}:{1} !important'.format(prop.name, prop.value)
+                return u('{0}:{1} !important').format(prop.name, prop.value)
 
         def join_css_properties(properties):
             """ Accepts a list of cssutils Property objects and returns
