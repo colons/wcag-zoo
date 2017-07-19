@@ -1,3 +1,5 @@
+from __future__ import print_function
+
 import click
 from lxml import etree
 from ast import literal_eval
