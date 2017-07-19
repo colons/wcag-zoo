@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+#!/usr/bin/env python
 from wcag_zoo.validators.tarsier import Tarsier
 
 my_html = b"<html><head><body><h2>This is wrong, it should be h1"
