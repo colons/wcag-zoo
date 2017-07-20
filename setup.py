@@ -18,9 +18,9 @@ setup(
     license='',
     description='',
     long_description=README,
-    url='https://github.com/data61/wcag-zoo',
+    url='https://github.com/colons/wcag-zoo',
     author='Samuel Spencer',
-    author_email='sam@aristotlemetadata.com',
+    author_email='wcag-zoo@colons.co',
     classifiers=[
         'Development Status :: 5 - Production/Stable',
 
