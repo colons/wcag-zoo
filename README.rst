@@ -4,8 +4,8 @@ WCAG Zoo - Scripts for automated accessiblity validation
 |wcag-zoo-aa-badge| |appveyor| |travis| |coverage| |pypi| |docs|
 
 .. |appveyor| image:: https://ci.appveyor.com/api/projects/status/uyo3jx1em3cmjrku?svg=true
-   :target: https://ci.appveyor.com/project/LegoStormtroopr/wcag-zoo
-   :alt: Appveyor testing status
+   :target: https://ci.appveyor.com/project/colons/wcag-zoo
+ ,dtra  :alt: Appveyor testing status
    
 .. |travis| image:: https://travis-ci.org/colons/wcag-zoo.svg?branch=master
     :target: https://travis-ci.org/colons/wcag-zoo
@@ -145,7 +145,7 @@ Installing
 ----------
 
 * Stable: ``pip3 install wcag-zoo``
-* Development: ``pip3 install https://github.com/LegoStormtroopr/wcag-zoo``
+* Development: ``pip3 install https://github.com/colons/wcag-zoo``
 
 
 How to Use
