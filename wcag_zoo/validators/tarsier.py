@@ -8,8 +8,10 @@ class Tarsier(WCAGCommand):
     """
 
     animal = """
-        The tarsiers are prosimian (non-monkey) primates. They got their name from the long bones in their feet.
-        They are now placed in the suborder Haplorhini, together with the simians (monkeys).
+        The tarsiers are prosimian (non-monkey) primates. They got their name
+        from the long bones in their feet.
+        They are now placed in the suborder Haplorhini, together with the
+        simians (monkeys).
 
         Tarsiers have huge eyes and long feet, and catch the insects by jumping at them.
         During the night they wait quietly, listening for the sound of an insect moving nearby.
@@ -36,15 +38,27 @@ class Tarsier(WCAGCommand):
         for node in self.tree.xpath(xpath):
             h = int(node.tag[1])
             if h == depth:
-                self.success += 1
+                self.add_success(
+                    guideline='1.3.1',
+                    technique='H42',
+                    node=node
+                )
             elif h == depth + 1:
-                self.success += 1
+                self.add_success(
+                    guideline='1.3.1',
+                    technique='H42',
+                    node=node
+                )
             elif h < depth:
-                self.success += 1
+                self.add_success(
+                    guideline='1.3.1',
+                    technique='H42',
+                    node=node
+                )
             else:
                 self.add_failure(
                     guideline='1.3.1',
-                    technique='G20',
+                    technique='H42',
                     node=node,
                     message=Tarsier.error_codes['tarsier-1'].format(
                         elem=node.getroottree().getpath(node),
