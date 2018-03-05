@@ -34,13 +34,14 @@ TECHNIQUE = {
 def normalise_color(color):
     rgba_color = None
     color = color.split("!", 1)[0].strip()  # remove any '!important' declarations
+    color = color.strip(";").strip("}")  # Dang minimisers
 
     if "transparent" in color or "inherit" in color:
         rgba_color = [0, 0, 0, 0.0]
     elif color.startswith('rgb('):
-        rgba_color = map(int, color.split('(')[1].split(')')[0].split(', '))
+        rgba_color = list(map(int, color.split('(')[1].split(')')[0].split(', ')))
     elif color.startswith('rgba('):
-        rgba_color = map(float, color.split('(')[1].split(')')[0].split(', '))
+        rgba_color = list(map(float, color.split('(')[1].split(')')[0].split(', ')))
     else:
         funcs = [
             webcolors.hex_to_rgb,
@@ -51,8 +52,9 @@ def normalise_color(color):
         for func in funcs:
             try:
                 rgba_color = list(func(color))
+                break
             except:
-                pass
+                continue
 
     if rgba_color is None:
         rgba_color = [0, 0, 0, 1]
