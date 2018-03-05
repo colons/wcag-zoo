@@ -11,7 +11,6 @@ from premailer.premailer import _cache_parse_css_string
 # From Premailer
 import cssutils
 import re
-from six import u
 
 cssutils.log.setLevel(logging.CRITICAL)
 _element_selector_regex = re.compile(r'(^|\s)\w')
