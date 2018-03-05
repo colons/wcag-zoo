@@ -20,7 +20,7 @@ FILTER_PSEUDOSELECTORS = [':last-child', ':first-child', ':nth-child', ":focus"]
 class Premoler(Premailer):
     def __init__(self, *args, **kwargs):
         self.media_rules = kwargs.pop('media_rules', [])
-        super().__init__(*args, **kwargs)
+        super(Premoler, self).__init__(*args, **kwargs)
 
     # We have to override this because an absolute path is from root, not the curent dir.
     def _load_external(self, url):
