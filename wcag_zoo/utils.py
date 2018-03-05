@@ -59,37 +59,12 @@ class Premoler(Premailer):
 
         return css_body
 
-<<<<<<< HEAD
-    def _parse_style_rules(self, css_body, ruleset_index):
-        """Returns a list of rules to apply to this doc and a list of rules
-        that won't be used because e.g. they are pseudoclasses. Rules
-        look like: (specificity, selector, bulk)
-        for example: ((0, 1, 0, 0, 0), u'.makeblue', u'color:blue').
-        The bulk of the rule should not end in a semicolon.
-        """
-
-        def format_css_property(prop):
-            if self.strip_important or prop.priority != 'important':
-                return u('{0}:{1}').format(prop.name, prop.value)
-            else:
-                return u('{0}:{1} !important').format(prop.name, prop.value)
-
-        def join_css_properties(properties):
-            """ Accepts a list of cssutils Property objects and returns
-            a semicolon delimitted string like 'color: red; font-size: 12px'
-            """
-            return ';'.join(
-                format_css_property(prop)
-                for prop in properties
-            )
-=======
     def _parse_css_string(self, css_body, validate=True):
         # We override this so we can do our rules altering for media queries
         if self.cache_css_parsing:
             sheet = _cache_parse_css_string(css_body, validate=validate)
         else:
             sheet = cssutils.parseString(css_body, validate=validate)
->>>>>>> 9375f8aa21fe126ed739a1d57eb7e093be074384
 
         _rules = []
         for rule in sheet:
