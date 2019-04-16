@@ -87,9 +87,9 @@ def generate_opaque_color(color_stack):
     colors = []
     # Take colors back off the stack until we get one with an alpha of 1.0
     for c in color_stack[::-1]:
-        if int(c[3]) == 0:
+        if c[3] == 0:
             continue
-        colors.append(c)
+        colors.append([D(p) for p in c])
         if c[3] == 1.0:
             break
 
@@ -223,7 +223,7 @@ class Molerat(WCAGCommand):
 
         font_size = calculate_font_size(fonts)
         font_is_bold = is_font_bold(fonts)
-        foreground = generate_opaque_color(colors)
+        foreground = generate_opaque_color(backgrounds + [colors[-1]])
         background = generate_opaque_color(backgrounds)
         ratio = calculate_luminocity_ratio(foreground, background)
 
