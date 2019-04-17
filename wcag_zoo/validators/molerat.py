@@ -31,13 +31,15 @@ TECHNIQUE = {
 }
 
 
-def normalise_color(color):
+def normalise_color(color, inherited_color):
     rgba_color = None
     color = color.split("!", 1)[0].strip()  # remove any '!important' declarations
     color = color.strip(";").strip("}")  # Dang minimisers
 
-    if "transparent" in color or "inherit" in color:
-        rgba_color = [0, 0, 0, 0.0]
+    if "inherit" in color:
+        rgba_color = inherited_color
+    if "transparent" in color:
+        rgba_color = [0, 0, 0, 0]
     elif color.startswith('rgb('):
         rgba_color = list(map(int, color.split('(')[1].split(')')[0].split(', ')))
     elif color.startswith('rgba('):
@@ -213,9 +215,9 @@ class Molerat(WCAGCommand):
 
         for styles in get_applicable_styles(node):
             if "color" in styles.keys():
-                colors.append(normalise_color(styles['color']))
+                colors.append(normalise_color(styles['color'], colors[-1]))
             if "background-color" in styles.keys():
-                backgrounds.append(normalise_color(styles['background-color']))
+                backgrounds.append(normalise_color(styles['background-color'], backgrounds[-1]))
             font_rules = {}
             for rule in styles.keys():
                 if 'font' in rule:
