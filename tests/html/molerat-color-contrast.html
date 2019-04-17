@@ -16,6 +16,15 @@
                 color: OldLace;
                 background-color: Linen;
             }
+            .black {
+                background-color: rgb(0,0,0);
+            }
+            .very-light {
+                color: rgba(255,255,255, 0.9);
+            }
+            .very-dark {
+                color: rgba(255,255,255, 0.1);
+            }
         </style>
     </head>
     <body>
@@ -25,10 +34,20 @@
         </div>
         <p class="habdashery" data-wcag-failure-code="molerat-1">
             This is hard to read.
-            <span style="color:#00000" data-wcag="success">
+            <span style="color:#000000" data-wcag="success">
                 This is better!
             </span>
         </p>
+        <div class="black very-dark">
+            <p data-wcag-failure-code="molerat-1">
+                This is hard to read.
+            </p>
+        </div>
+        <div class="black very-light">
+            <p data-wcag="success">
+                This is easy to read.
+            </p>
+        </div>
         </div>
     </body>
 </html>
